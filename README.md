@@ -19,23 +19,28 @@ Step 6: Create a function for gradio
 Step 7: Print Result. 
 
 ### Program:
+#import packages
 import numpy as np
-
 import pandas as pd
 
 pip install gradio
 
 pip install typing-extensions --upgrade
 
-pip install --upgrade typing
+!python --version
 
-pip install typing-extensions --upgrade
+pip install --upgrade typing
 
 import gradio as gr
 
-data = pd.read_csv('/content/diabetes.csv')
+import pandas as pd
+
+#get the data
+data = pd.read_csv('diabetes.csv')
 
 data.head()
+![exp13_1](https://github.com/elakiet/Miniproject_AI/assets/133135881/b8c4e4f7-0fa6-46bd-ab74-52ddd213b1a9)
+
 
 print(data.columns)
 
@@ -44,30 +49,30 @@ x = data.drop(['Outcome'], axis=1)
 y = data['Outcome']
 
 print(x[:5])
+![exp13_2](https://github.com/elakiet/Miniproject_AI/assets/133135881/680919ae-97f1-473b-8a6c-cd70e2d69928)
+
 
 #split data
-
 from sklearn.model_selection import train_test_split
 
 x_train, x_test, y_train, y_test= train_test_split(x,y)
 
+#scale data
 from sklearn.preprocessing import StandardScaler
-
 scaler = StandardScaler()
-
 x_train_scaled = scaler.fit_transform(x_train)
-
 x_test_scaled = scaler.fit_transform(x_test)
 
+instatiate model
 from sklearn.neural_network import MLPClassifier
-
 model = MLPClassifier(max_iter=1000, alpha=1)
-
 model.fit(x_train, y_train)
-
 print("Model Accuracy on training set:", model.score(x_train, y_train))
-
 print("Model Accuracy on Test Set:", model.score(x_test, y_test))
+
+print(data.columns)
+
+#create a function for gradio
 
 def diabetes(Pregnancies, Glucose, Blood_Pressure, SkinThickness, Insulin, BMI,Diabetes_Pedigree, Age):
 
@@ -91,10 +96,6 @@ app.launch(share=True)
 
 
 ### Output:
-![exp13_1](https://github.com/elakiet/Miniproject_AI/assets/133135881/b8c4e4f7-0fa6-46bd-ab74-52ddd213b1a9)
-
-![exp13_2](https://github.com/elakiet/Miniproject_AI/assets/133135881/680919ae-97f1-473b-8a6c-cd70e2d69928)
-
 ![exp13_3](https://github.com/elakiet/Miniproject_AI/assets/133135881/b78f2622-3879-49a8-9a34-a2efc0b1bb1e)
 
 
