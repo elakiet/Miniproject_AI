@@ -70,14 +70,17 @@ print("Model Accuracy on training set:", model.score(x_train, y_train))
 print("Model Accuracy on Test Set:", model.score(x_test, y_test))
 
 def diabetes(Pregnancies, Glucose, Blood_Pressure, SkinThickness, Insulin, BMI,Diabetes_Pedigree, Age):
+
     x = np.array([Pregnancies,Glucose,Blood_Pressure,SkinThickness,Insulin,BMI,Diabetes_Pedigree,Age])
     
     prediction = model.predict(x.reshape(1, -1))
     
     if(prediction==0):
+    
       return "NO"
       
     else:
+    
       return "YES"
 
 outputs = gr.Textbox()
