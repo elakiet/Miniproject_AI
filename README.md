@@ -59,15 +59,23 @@ x_train, x_test, y_train, y_test= train_test_split(x,y)
 
 #scale data
 from sklearn.preprocessing import StandardScaler
+
 scaler = StandardScaler()
+
 x_train_scaled = scaler.fit_transform(x_train)
+
 x_test_scaled = scaler.fit_transform(x_test)
 
 instatiate model
+
 from sklearn.neural_network import MLPClassifier
+
 model = MLPClassifier(max_iter=1000, alpha=1)
+
 model.fit(x_train, y_train)
+
 print("Model Accuracy on training set:", model.score(x_train, y_train))
+
 print("Model Accuracy on Test Set:", model.score(x_test, y_test))
 
 print(data.columns)
